@@ -16,8 +16,6 @@ const playAgain = document.querySelector('.notif-btn')
 
 let letters;
 
-let lives = 5
-
 const words = [
     'please',
     'let',
@@ -33,6 +31,7 @@ function randomWord() {
 // random word will be chosen on every start and reset
 let selectWord;
 
+
 function alphabet(gameState) {
     wordDiv.innterHTML = '';
     if (gameState === 'start') {
@@ -47,6 +46,9 @@ function alphabet(gameState) {
         });
         notif.classList.add('hidden');
     }
+
+    lives = 5;
+    //capturing letters div
     letters = document.querySelectorAll('.alpha');
     liveSpan.textContent = lives;
 
@@ -59,6 +61,78 @@ function alphabet(gameState) {
 
 };
 
+// check if we get complete word
+function checkWord() {
+    let val = true;
+    for (let i = 0; i < wordDiv.children.length; i++) {
+        if (wordDiv.children[i].textContent === '_') {
+            val = false;
+        }
+    }
+    return val;
+}
 
+// get mutilples matching indexes of press letter
+// to the selected word
+function getIndexes(letter) {
+    let indexes = [];
+    [...selectWord].forEach((val, i) => {
+        if (val === letter) {
+            let index = i;
+            indexes.push(index);
+        }
+    });
+    // console.log(indexes)
+    return indexes;
+}
+
+// show notifaction
+function showNotIf(message) {
+    notif.classList.remove('hidden');
+    notifSpan.textContent = selectWord;
+    notifContent.textContent = `You ${message}`;
+};
+
+// decrease life
+function decreaseLife() {
+    lives--;
+    liveSpan.textContent = lives;
+    if (lives === 0) {
+        showNotIf('lost');
+    }
+};
+
+// letters event listener function
+function letterPress() {
+    let letter = this.textContent.toLowerCase();
+
+    if (selectWord.includes(letter)) {
+        let indexes_list = getIndexes(letter)
+        indexes_list.forEach((val) => {
+            wordDiv.children[val].textcontent = this.textContent;
+            
+        });
+        if (checkWord()) showNotIf('won')
+    } else {
+        decreaseLife();
+    }
+    this.classList.add('disabled')
+};
 
 alphabet('start')
+
+// adding listeners to letter buttons presses
+letters.forEach(btn => {
+    btn.addEventListener('click', letterPress)
+});
+
+// adding event listeners to reset and play again buttons
+document.querySelector('.reset-btn').addEventListener('click', function(){
+    window.location.reload();
+    return false;;
+})
+
+document.querySelector('.notif-btn').addEventListener('click', function(){
+    window.location.reload();
+    return false;;
+})
