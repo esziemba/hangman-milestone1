@@ -47,18 +47,18 @@ function alphabet(gameState) {
         });
         notif.classList.add('hidden');
     }
+    letters = document.querySelectorAll('.alpha');
+    liveSpan.textContent = lives;
+
+    selectWord = randomWord(words)
+    // grabing selected word
+    for (let i = 0; i < selectWord.length; i++) {
+        let html = `<p class='word'>_</p>`;
+        wordDiv.insertAdjacentHTML('beforeend', html);
+    }
+
 };
 
-// capturing letters div
 
-letters = document.querySelectorAll('.alpha');
-liveSpan.textContent = lives;
-
-selectWord = randomWord(words)
-// grabing selected word
-for (let i = 0; i < selectWord.length; i++) {
-    let html = `<p class='word'>_</p>`;
-    wordDiv.insertAdjacentHTML('beforeend', html);
-}
 
 alphabet('start')
