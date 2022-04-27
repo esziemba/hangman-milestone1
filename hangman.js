@@ -12,9 +12,7 @@ const resetButton = document.querySelector('.reset-btn');
 const notif = document.querySelector('.notif');
 const notifContent = document.querySelector('.notif-content');
 const notifSpan = document.querySelector('.notif-span');
-const playAgain = document.querySelector('.notif-btn')
-
-let letters;
+const playAgain = document.querySelector('.notif-btn');
 
 const words = [
     'please',
@@ -29,7 +27,7 @@ function randomWord() {
 }
 
 // random word will be chosen on every start and reset
-let selectWord;
+
 
 
 function alphabet(gameState) {
@@ -47,7 +45,7 @@ function alphabet(gameState) {
         notif.classList.add('hidden');
     }
 
-    lives = 5;
+     lives = 5;
     //capturing letters div
     letters = document.querySelectorAll('.alpha');
     liveSpan.textContent = lives;
@@ -61,6 +59,7 @@ function alphabet(gameState) {
 
 };
 
+
 // check if we get complete word
 function checkWord() {
     let val = true;
@@ -70,9 +69,9 @@ function checkWord() {
         }
     }
     return val;
-}
+};
 
-// get mutilples matching indexes of press letter
+// get matching indexes of press letter
 // to the selected word
 function getIndexes(letter) {
     let indexes = [];
@@ -82,16 +81,16 @@ function getIndexes(letter) {
             indexes.push(index);
         }
     });
-    // console.log(indexes)
     return indexes;
 }
+
 
 // show notifaction
 function showNotIf(message) {
     notif.classList.remove('hidden');
     notifSpan.textContent = selectWord;
     notifContent.textContent = `You ${message}`;
-};
+}
 
 // decrease life
 function decreaseLife() {
@@ -100,7 +99,7 @@ function decreaseLife() {
     if (lives === 0) {
         showNotIf('lost');
     }
-};
+}
 
 // letters event listener function
 function letterPress() {
@@ -109,30 +108,30 @@ function letterPress() {
     if (selectWord.includes(letter)) {
         let indexes_list = getIndexes(letter)
         indexes_list.forEach((val) => {
-            wordDiv.children[val].textcontent = this.textContent;
-            
+            wordDiv.children[val].textContent = this.textContent;
         });
-        if (checkWord()) showNotIf('won')
+        if (checkWord()) showNotIf('Win!')
     } else {
         decreaseLife();
     }
     this.classList.add('disabled')
-};
+}
 
+// invoking functions
 alphabet('start')
 
 // adding listeners to letter buttons presses
 letters.forEach(btn => {
     btn.addEventListener('click', letterPress)
-});
+})
 
 // adding event listeners to reset and play again buttons
-document.querySelector('.reset-btn').addEventListener('click', function(){
+document.querySelector('.reset-btn').addEventListener('click', function () {
     window.location.reload();
     return false;;
 })
 
-document.querySelector('.notif-btn').addEventListener('click', function(){
+document.querySelector('.notif-btn').addEventListener('click', function () {
     window.location.reload();
     return false;;
 })
