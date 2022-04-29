@@ -1,9 +1,3 @@
-// Guess the words using single words as input
-// get the number of lives
-// get a reset button
-// pop up the win or lose 
-// each worng guess will delete the alphabet form the list and decrease a life
-
 // capturing the HTML Classes
 const letterDiv = document.querySelector('.letter-div');
 const wordDiv = document.querySelector('.word-div');
@@ -15,14 +9,24 @@ const notifSpan = document.querySelector('.notif-span');
 const playAgain = document.querySelector('.notif-btn');
 
 const words = [
-    'please',
-    'let',
-    'this',
-    'work',
-    'miami',
-    'pain',
-    'headache',
+    'nes',
+    'super' + 'nintendo',
+    'nintendo' + '64',
+    'gamecube',
+    'switch',
+    'playstation',
+    'playstation' + '2',
+    'playstation' + '3',
+    'playstation' + '4',
+    'playstation' + '5',
+    'sega',
+    'sega' + 'dreamcast',
+    'xbox',
+    'xbox' + '360',
+    'xbox' + 'one',
+    'xbox' + 'series' + 'x'
 ]
+
 // get random word for words list
 
 function randomWord() {
@@ -37,7 +41,7 @@ function alphabet(gameState) {
     wordDiv.innterHTML = '';
     if (gameState === 'start') {
         // putting letters in html
-        for (const i of 'abcdefghijklmnopqrstuvwxyz') {
+        for (const i of 'abcdefghijklmnopqrstuvwxyz1234567890') {
             let html = `<button class="alpha">${i.toUpperCase()}</button>`;
             letterDiv.insertAdjacentHTML('beforeend', html);
         }
