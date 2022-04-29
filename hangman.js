@@ -18,7 +18,10 @@ const words = [
     'please',
     'let',
     'this',
-    'work'
+    'work',
+    'miami',
+    'pain',
+    'headache',
 ]
 // get random word for words list
 

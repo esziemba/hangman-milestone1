@@ -1,12 +1,14 @@
 body {
     /* background-image: linear-gradient(to right, #f46b45, #eea849); */
-    background-image: linear-gradient(to right, #606c88, #3f4c6b);
-    color: white;
+    background-image: linear-gradient(to right, #FBF8BE, #234E70);
+    color: rgb(217, 234, 241);
     text-align: center;
   }
   .wrapper {
     width: fit-content;
     margin: auto;
+    padding: 4em;
+    font-size: 20px;
   }
 
   .reset-btn,
@@ -17,16 +19,16 @@ body {
     margin-left: auto;
   }
   .alpha {
-    width: 2rem;
-    height: 2rem;
-    background: #ffe5b4;
+    width: 4rem;
+    height: 4rem;
+    background: #70bdcd;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     margin: 3px;
     cursor: pointer;
   }
   .alpha:hover {
-    background-color: #e75480;
+    background-color: #e37854;
     border: none;
   }
   .disabled {
@@ -36,6 +38,9 @@ body {
   
   .word-div {
     display: inline-flex;
+    padding: 3rem;
+    font-size: 20px;
+    text-align: center;
   }
   .word {
     margin-right: 1.5rem;
@@ -46,15 +51,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fc6c85;
+    background: #396d6a;
     width: 20rem;
     padding: 20px 10px;
     border-radius: 4px;
     box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2);
   }
-  .blur {
-    filter: blur(2px);
-  }
+
   .hidden {
     display: none;
   }
